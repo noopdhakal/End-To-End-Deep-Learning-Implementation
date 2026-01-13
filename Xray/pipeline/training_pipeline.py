@@ -9,8 +9,8 @@ class TrainPipeline:
     def __init__(self):
         self.data_ingestion_config=DataIngestionConfig()
         
-        def start_data_ingestion(self) -> DataIngestionArtifact:
-            logging.info("Entered the start_data_ingestion method of TrainPipeline class")
+    def start_data_ingestion(self) -> DataIngestionArtifact:
+        logging.info("Entered the start_data_ingestion method of TrainPipeline class")
         try:
 
             logging.info("Getting the data from s3 bucket")
@@ -31,13 +31,40 @@ class TrainPipeline:
 
         except Exception as e:
             raise XRayException(e, sys)
+        
+    def run_pipeline(self) -> None:
+        logging.info("Entered the run_pipeline method of TrainPipeline class")
 
-if __name__ == "__main__":
-    train_pipeline=TrainPipeline()
+        try:
+            data_ingestion_artifact: DataIngestionArtifact = self.start_data_ingestion()
+            # data_transformation_artifact: DataTransformationArtifact = (
+            #     self.start_data_transformation(
+            #         data_ingestion_artifact=data_ingestion_artifact
+            #     )
+            # )
 
-    train_pipeline.start_data_ingestion()
 
+            # model_trainer_artifact: ModelTrainerArtifact = self.start_model_trainer(
+            #     data_transformation_artifact=data_transformation_artifact
+            # )
             
+            # model_evaluation_artifact: ModelEvaluationArtifact = (
+            #     self.start_model_evaluation(
+            #         model_trainer_artifact=model_trainer_artifact,
+            #         data_transformation_artifact=data_transformation_artifact,
+            #     )
+            # )
+            
+            # model_pusher_artifact = self.start_model_pusher()
+
+            logging.info("Exited the run_pipeline method of TrainPipeline class")
+
+        except Exception as e:
+            raise XRayException(e, sys)
+
+
+
+
             
         
         
