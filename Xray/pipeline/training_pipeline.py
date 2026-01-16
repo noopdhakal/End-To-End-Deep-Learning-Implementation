@@ -13,7 +13,7 @@ class TrainPipeline:
         self.data_ingestion_config=DataIngestionConfig()
         self.data_transformation_config=DataTransformationConfig()
         self.model_trainer_config = ModelTrainerConfig()
-        self.model_evaluation = ModelEvaluation()
+        self.model_evaluation_config = ModelEvaluationConfig()
         
     def start_data_ingestion(self) -> DataIngestionArtifact:
         logging.info("Entered the start_data_ingestion method of TrainPipeline class")
